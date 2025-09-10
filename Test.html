@@ -3,189 +3,508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oral Health Heroes - School Dental Screenings</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Jose's Barbershop - Johannesburg</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+            background-color: #0A0A0A;
+            color: #E0E0E0;
         }
-        /* Custom scrollbar for a cleaner look */
-        ::-webkit-scrollbar {
+        .hero {
+            background-image: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)), url('https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Barber+Shop+Hero');
+            background-size: cover;
+            background-position: center;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        #chat-toggle {
+            background-color: #FFB800;
+            color: #0A0A0A;
+            border-radius: 9999px;
+            padding: 1rem;
+            box-shadow: 0 4px 14px rgba(255, 184, 0, 0.4);
+        }
+        #chat-window {
+            height: 400px;
+            width: 300px;
+            background-color: #1A1A1A;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        #chat-messages::-webkit-scrollbar {
             width: 8px;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        #chat-messages::-webkit-scrollbar-track {
+            background: #1A1A1A;
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
+        #chat-messages::-webkit-scrollbar-thumb {
+            background-color: #333333;
             border-radius: 10px;
+            border: 2px solid #1A1A1A;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-content {
+            background-color: #1A1A1A;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 90%;
+            animation: fadeIn 0.3s ease-out;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="antialiased">
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col items-center">
+        <!-- Navigation -->
+        <header class="w-full bg-black bg-opacity-80 backdrop-blur-sm fixed top-0 z-50 shadow-lg">
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-yellow-500 uppercase tracking-widest">
+                    <span class="text-white">JOSE'S</span> BARBERSHOP
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="#services" class="text-white hover:text-yellow-500 transition-colors">Services</a>
+                    <a href="#gallery" class="text-white hover:text-yellow-500 transition-colors">Gallery</a>
+                    <a href="#testimonials" class="text-white hover:text-yellow-500 transition-colors hidden md:inline-block">Testimonials</a>
+                    <a href="#about" class="text-white hover:text-yellow-500 transition-colors hidden md:inline-block">About</a>
+                    <a href="#contact" class="text-white hover:text-yellow-500 transition-colors">Contact</a>
+                </div>
+            </nav>
+        </header>
 
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-sm py-4 sticky top-0 z-50">
-        <nav class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-blue-600 rounded-md p-2 hover:bg-blue-50 transition duration-300">
-                Oral Health Heroes
-            </a>
-            <div class="space-x-4">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-md hover:bg-gray-100">About Us</a>
-                <a href="#services" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-md hover:bg-gray-100">Services</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-md hover:bg-gray-100">Contact</a>
+        <!-- Hero Section -->
+        <section class="hero text-center text-white py-32 md:py-48 w-full flex-grow flex items-center justify-center">
+            <div class="bg-black bg-opacity-70 p-8 rounded-xl shadow-2xl max-w-2xl mx-4 fade-in">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
+                    Where Style Meets Precision
+                </h1>
+                <p class="text-lg md:text-xl font-medium mb-8">
+                    Crafting the sharpest, most modern looks in Johannesburg.
+                </p>
+                <a href="https://wa.me/27676895703" target="_blank" class="bg-yellow-500 text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors transform hover:scale-105 inline-block shadow-lg">
+                    Book Now via WhatsApp
+                </a>
             </div>
-        </nav>
-    </header>
+        </section>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative bg-gradient-to-r from-blue-600 to-teal-500 text-white py-20 md:py-32 overflow-hidden">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-                Empowering Healthy Smiles for Tomorrow's Leaders
-            </h1>
-            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-90">
-                As Wits University Oral Hygiene students, we bring professional, non-invasive dental screenings directly to your school, fostering a foundation of lifelong oral health.
-            </p>
-            <a href="#contact" class="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                Book a School Screening Today!
-            </a>
-        </div>
-        <!-- Background shapes for visual interest -->
-        <div class="absolute inset-0 z-0 opacity-20">
-            <div class="absolute top-1/4 left-1/4 w-48 h-48 bg-white rounded-full mix-blend-overlay animate-pulse"></div>
-            <div class="absolute bottom-1/3 right-1/3 w-64 h-64 bg-white rounded-full mix-blend-overlay animate-pulse delay-1000"></div>
-            <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-white rounded-full mix-blend-overlay animate-pulse delay-500"></div>
-        </div>
-    </section>
+        <!-- Services Section -->
+        <section id="services" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-500">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Haircut Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Classic Haircut</h3>
+                    <p class="text-gray-400 mb-4">A precise and stylish haircut tailored to your specific style and head shape. Includes a clean finish.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 150</span>
+                </div>
+                <!-- Shave Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Hot Towel Shave</h3>
+                    <p class="text-gray-400 mb-4">Experience the ultimate smooth shave with hot towels, soothing oils, and a straight razor finish.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 120</span>
+                </div>
+                <!-- Beard Trim Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Beard Trim & Shape</h3>
+                    <p class="text-gray-400 mb-4">Precision beard trimming and shaping to give your facial hair a clean, defined look.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 80</span>
+                </div>
+                <!-- Fade Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Modern Fade</h3>
+                    <p class="text-gray-400 mb-4">From low to high, a perfect fade that blends seamlessly for a contemporary finish.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 160</span>
+                </div>
+                <!-- Kids Cut Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Kids Haircut</h3>
+                    <p class="text-gray-400 mb-4">A professional and patient haircut for children under 12, ensuring a great experience for all.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 100</span>
+                </div>
+                <!-- Scalp Treatment Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Scalp Treatment</h3>
+                    <p class="text-gray-400 mb-4">A rejuvenating treatment to nourish your scalp and improve hair health.</p>
+                    <span class="text-yellow-500 font-bold text-xl">R 90</span>
+                </div>
+            </div>
+            <div class="text-center mt-12 fade-in">
+                <a href="https://wa.me/27676895703" target="_blank" class="bg-yellow-500 text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors transform hover:scale-105 inline-block shadow-lg">
+                    Book Your Appointment Today
+                </a>
+            </div>
+        </section>
 
-    <!-- About Us Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-10">Who Are We?</h2>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-500">What Our Clients Say</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl fade-in">
+                    <p class="italic text-gray-400 mb-4">"Luthando is a master of his craft. The attention to detail on my fade was incredible. Best barber in Jo'burg, hands down!"</p>
+                    <p class="font-bold text-white">- Thabo M.</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl fade-in">
+                    <p class="italic text-gray-400 mb-4">"The hot towel shave was pure luxury. Luthando made me feel comfortable and the end result was a perfect, clean shave."</p>
+                    <p class="font-bold text-white">- Sizwe K.</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl fade-in">
+                    <p class="italic text-gray-400 mb-4">"I've been going to Jose's Barbershop for years. Luthando always knows exactly what I want and delivers a great cut every time. Highly recommended!"</p>
+                    <p class="font-bold text-white">- Lebo D.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Haircut Recommender Section -->
+        <section id="ai-recommender" class="container mx-auto px-4 py-16 md:py-24">
+            <div class="bg-gray-900 p-8 rounded-2xl shadow-xl text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-yellow-500 mb-4">AI Haircut Recommender</h2>
+                <p class="text-gray-400 mb-8">
+                    Not sure what haircut to get? Upload a photo and our AI will suggest a style that suits you.
+                </p>
+                <div class="max-w-md mx-auto">
+                    <input type="file" id="imageInput" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100 mb-6">
+                    <button id="recommendBtn" class="w-full bg-yellow-500 text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors transform hover:scale-105">
+                        Get AI Recommendation
+                    </button>
+                    <div id="recommenderMessage" class="mt-6 text-gray-300 font-medium"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-500">Our Work</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Fade" alt="A perfect fade haircut" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Beard" alt="A well-groomed beard" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Haircut" alt="Classic haircut style" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Style" alt="A modern styled haircut" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Clean" alt="A clean, sharp-lined haircut" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Shave" alt="A hot towel shave" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Trim" alt="Beard trim and shape" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                <img src="https://placehold.co/600x600/1C1C1C/E0E0E0?text=Finish" alt="A final, polished look" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container mx-auto px-4 py-16 md:py-24">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="text-lg leading-relaxed mb-4">
-                        Hello! We're **Zwelakhe Mazibuko** and **Phozisa Diko**, two passionate oral hygiene students from **Wits University, Johannesburg**. We started Oral Health Heroes because we believe that good oral health education should begin early and be accessible to everyone.
+                <div class="space-y-4 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-yellow-500 mb-4">About Luthando Jose</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        I'm Luthando Jose, a dedicated barber in Johannesburg with over 10 years of experience. My passion is to provide more than just a haircut—I offer an experience tailored to each client. From classic styles to the latest trends, my goal is to make every client look and feel their absolute best.
                     </p>
-                    <p class="text-lg leading-relaxed mb-4">
-                        Currently, our focus is entirely on **non-invasive dental screenings** for schools and other community groups. We're still building our foundation, learning, and constantly improving our service to ensure every screening is a positive and educational experience for the children.
-                    </p>
-                    <p class="text-lg leading-relaxed">
-                        In the future, once we've graduated and are fully established, we're excited to expand our services to include comprehensive treatments like cleanings, fluoride applications, fissure sealants, and more. For now, we're dedicated to making a difference one smile at a time through preventative care.
+                    <p class="text-gray-400 leading-relaxed">
+                        My barbershop is a place where you can relax, chat, and leave with a sharp new look. I believe in delivering precision, style, and professional service every time you sit in my chair.
                     </p>
                 </div>
-                <div class="flex justify-center items-center">
-                    <!-- Placeholder image for now. You can replace this with a team photo! -->
-                    <img src="https://placehold.co/400x300/e0f2f7/26a69a?text=Our+Team" alt="Oral Health Heroes Team" class="rounded-xl shadow-lg w-full max-w-sm md:max-w-full h-auto object-cover">
+                <img src="https://placehold.co/800x600/1C1C1C/E0E0E0?text=Luthando+Jose+Portrait" alt="Portrait of Luthando Jose" class="w-full h-auto rounded-xl shadow-2xl">
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-500">Contact & Book</h2>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Send us a Message</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-400 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-400 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-400 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 transition-colors transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Location & Map -->
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Find Us</h3>
+                    <div class="space-y-4 mb-6">
+                        <p class="flex items-center space-x-2 text-gray-400">
+                            <!-- Location Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>123 Barber Street, Johannesburg, Gauteng, South Africa</span>
+                        </p>
+                        <p class="flex items-center space-x-2 text-gray-400">
+                            <!-- Phone Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2h-11a2 2 0 0 1-2-2v-3a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"></path>
+                                <path d="M20 22L20 20"></path>
+                            </svg>
+                            <a href="tel:+27676895703" class="hover:text-yellow-400 transition-colors">+27 67 689 5703</a>
+                        </p>
+                        <p class="flex items-center space-x-2 text-gray-400">
+                            <!-- Email Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="M22 6L12 13L2 6"></path>
+                            </svg>
+                            <span>info@josesbarbershop.com</span>
+                        </p>
+                    </div>
+                    <!-- Google Maps Embed -->
+                    <iframe
+                        class="w-full rounded-xl shadow-lg"
+                        height="300"
+                        frameborder="0"
+                        style="border:0"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Johannesburg+Barber+Shop"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-10">Our Services</h2>
-            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
-                <div class="text-blue-500 mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 mx-auto">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.798.183 1.598-.514 1.598-1.316L18.42 5.672a3.75 3.75 0 1 0-7.5 0V3.375c0-.621-.504-1.125-1.125-1.125H10.5a1.125 1.125 0 0 1-1.125-1.125V1.5c0-.813-.913-1.296-1.557-.745L3.25 4.722c-.22.165-.4.42-.5.678-.625 1.67-2.137 2.83-3.026 3.872C1.381 11.17 2.75 14.172 2.75 18.75Z" />
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Non-Invasive Dental Screenings for Schools</h3>
-                <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                    Our primary service focuses on providing thorough, yet gentle, dental screenings for students directly at their school premises. We identify potential oral health issues early, offer basic oral hygiene education, and provide recommendations for further care if needed.
-                </p>
-                <ul class="list-disc list-inside text-left text-gray-700 space-y-2 max-w-md mx-auto">
-                    <li>Visual examination of teeth and gums.</li>
-                    <li>Assessment for common dental issues (e.g., cavities, gingivitis).</li>
-                    <li>Basic oral hygiene instruction tailored for children.</li>
-                    <li>Recommendations for parents/guardians on next steps.</li>
-                    <li>All screenings are conducted by qualified Wits University Oral Hygiene students.</li>
-                </ul>
-                <p class="text-xl font-semibold text-blue-600 mt-8">
-                    We do not perform any invasive procedures during our screenings.
-                </p>
+        <!-- Footer -->
+        <footer class="w-full bg-black py-6 text-center text-gray-500">
+            <p>&copy; 2025 Jose's Barbershop. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="chat-container" class="hidden md:block">
+        <button id="chat-toggle" class="hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"></path>
+            </svg>
+        </button>
+        <div id="chat-window" class="hidden flex-col">
+            <div class="flex items-center justify-between p-4 bg-gray-900 rounded-t-xl">
+                <h3 class="text-white font-bold">Jose's Barbershop AI</h3>
+                <button id="chat-close" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div id="chat-messages" class="flex-grow p-4 overflow-y-auto space-y-4"></div>
+            <div class="p-4 bg-gray-900 rounded-b-xl">
+                <form id="chat-form" class="flex">
+                    <input type="text" id="chat-input" class="flex-grow p-2 rounded-l-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-1 focus:ring-yellow-500 text-sm" placeholder="Ask a question...">
+                    <button type="submit" class="bg-yellow-500 text-black font-bold px-4 rounded-r-lg hover:bg-yellow-400">Send</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Call to Action Section -->
-    <section class="bg-blue-700 text-white py-16 md:py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Prioritize Your Students' Oral Health?</h2>
-            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
-                Partner with Oral Health Heroes to bring essential dental screenings and education to your school. It's simple, effective, and crucial for healthy development.
-            </p>
-            <a href="#contact" class="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                Get in Touch to Schedule
-            </a>
+    <!-- Modal for Form Submission -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-4 text-green-400">Message Sent!</h3>
+            <p class="text-gray-300 mb-6">Thank you for your message. We'll get back to you shortly.</p>
+            <button id="closeModal" class="bg-yellow-500 text-black font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition-colors">Close</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-10">Contact Us</h2>
-            <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                <p class="text-lg text-center mb-6">
-                    Have questions or want to schedule a screening for your school? Reach out to us! We're here to help.
-                </p>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="text-blue-500 mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.106l-1.412-.353a1.125 1.125 0 0 1-.823-.73l-.447-1.725a1.125 1.125 0 0 0-.588-.823L7.5 9.25a11.25 11.25 0 0 1 1.827-1.827l4.125-4.125a1.125 1.125 0 0 0-.823-.588l-1.725-.447a1.125 1.125 0 0 0-1.106-.852H6.75A2.25 2.25 0 0 0 4.5 4.5v2.25Z" />
-                            </svg>
-                        </div>
-                        <p class="text-lg font-semibold text-gray-700">Phone Numbers:</p>
-                        <a href="tel:+27643489310" class="text-blue-600 hover:underline">0643489310</a><br>
-                        <a href="tel:+27670350539" class="text-blue-600 hover:underline">0670350539</a>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-blue-500 mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                            </svg>
-                        </div>
-                        <p class="text-lg font-semibold text-gray-700">Email:</p>
-                        <a href="mailto:dental-education.emergent.host" class="text-blue-600 hover:underline break-all">dental-education.emergent.host</a>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-blue-500 mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                            </svg>
-                        </div>
-                        <p class="text-lg font-semibold text-gray-700">Location:</p>
-                        <p class="text-gray-600">Johannesburg, South Africa</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        // API key is left empty; the runtime will handle it
+        const API_KEY = "";
+        const API_URL_IMAGE = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        const API_URL_TEXT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p class="mb-4">&copy; 2025 Oral Health Heroes. All rights reserved.</p>
-            <p class="text-sm">Built with passion by Zwelakhe Mazibuko & Phozisa Diko.</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <!-- Add social media links here if you have them -->
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+        // Utility function to convert image to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
 
+        // --- AI Recommender Logic ---
+        const recommendBtn = document.getElementById('recommendBtn');
+        const imageInput = document.getElementById('imageInput');
+        const recommenderMessage = document.getElementById('recommenderMessage');
+
+        recommendBtn.addEventListener('click', async () => {
+            const file = imageInput.files[0];
+            if (!file) {
+                recommenderMessage.textContent = "Please upload an image first!";
+                return;
+            }
+
+            recommenderMessage.textContent = "Analyzing your image...";
+
+            try {
+                const base64Data = await fileToBase64(file);
+                const payload = {
+                    contents: [{
+                        parts: [
+                            { text: "Analyze this image of a person's head and suggest a modern, stylish barber haircut that would suit them. Consider their face shape and hair texture. Provide a brief, one-sentence description of the recommended style. Do not mention the API or any technical details." },
+                            { inlineData: { mimeType: file.type, data: base64Data } }
+                        ]
+                    }],
+                };
+
+                const response = await fetch(API_URL_IMAGE, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const text = result.candidates[0].content.parts[0].text;
+                recommenderMessage.innerHTML = `<p class="font-bold">Recommendation:</p><p>${text}</p>`;
+
+            } catch (error) {
+                console.error("Error during AI recommendation:", error);
+                recommenderMessage.textContent = "Sorry, something went wrong. Please try again.";
+            }
+        });
+
+        // --- AI Chatbot Logic ---
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatClose = document.getElementById('chat-close');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        let chatHistory = [{
+            role: "model",
+            parts: [{ text: "Hello! I'm your AI assistant from Jose's Barbershop. How can I help you today?" }]
+        }];
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+            chatWindow.classList.toggle('flex');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+            chatWindow.classList.remove('flex');
+        });
+
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('p-3', 'rounded-lg', 'max-w-xs', 'break-words');
+            messageDiv.textContent = text;
+            if (sender === 'user') {
+                messageDiv.classList.add('bg-yellow-500', 'text-black', 'ml-auto');
+            } else {
+                messageDiv.classList.add('bg-gray-700', 'text-gray-200');
+            }
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage(userMessage) {
+            appendMessage('user', userMessage);
+            chatInput.value = '';
+
+            // Add user message to history
+            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+            try {
+                const payload = {
+                    contents: chatHistory,
+                    systemInstruction: {
+                        parts: [{ text: "You are an AI chatbot for Jose's Barbershop in Johannesburg, run by Luthando Jose. Your purpose is to answer questions about our services (Haircut R150, Shave R120, Beard Trim R80, Fade R160, Kids Cut R100, Scalp Treatment R90), hours (9am-6pm, Mon-Sat), and contact number (+27 67 689 5703). Be friendly, encouraging, and concise. Do not answer questions outside of these topics." }]
+                    }
+                };
+
+                const response = await fetch(API_URL_TEXT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const aiMessage = result.candidates[0].content.parts[0].text;
+                appendMessage('model', aiMessage);
+                
+                // Add AI message to history
+                chatHistory.push({ role: "model", parts: [{ text: aiMessage }] });
+
+            } catch (error) {
+                console.error("Error during AI chat:", error);
+                appendMessage('model', "Sorry, I'm having trouble connecting right now. Please try again later.");
+            }
+        }
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                sendMessage(userMessage);
+            }
+        });
+
+        // Display initial AI message
+        appendMessage('model', chatHistory[0].parts[0].text);
+
+        // --- Form Submission Modal Logic ---
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+        const closeModal = document.getElementById('closeModal');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real application, you would send the form data to a server here.
+            // For this demo, we just show the success modal.
+            successModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+
+        // Hide modal if user clicks outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+
+    </script>
 </body>
 </html>
